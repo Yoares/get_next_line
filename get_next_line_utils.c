@@ -6,7 +6,7 @@
 /*   By: ykhoussi <ykhoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:14:40 by ykhoussi          #+#    #+#             */
-/*   Updated: 2024/12/02 17:40:16 by ykhoussi         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:11:29 by ykhoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t   ft_strlen(const char *s1)
     size_t i;
     
     i = 0;
+    if (!s1)
+        return (NULL);
     while (s1[i])
     {
         i++;
@@ -24,20 +26,25 @@ size_t   ft_strlen(const char *s1)
     return (i);
 }
 
-char    *ft_strcpy(char *s1, char *s2)
-  {
-      size_t i;
- 
-      i = 0;
-      while (s2[i])
-      {
-          s1[i] = s2[i];
-          i++;
-      }
-      s1[i] = '\0';
-      return (s1);
-  }
-  
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
+
+	i = 0;
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	if (!dst && !src)
+		return (NULL);
+	while (i < n && d != s)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dst);
+}
+
 char    *ft_strjoin(char *s1, char *s2)
 {
     size_t s1_len;
@@ -56,50 +63,12 @@ char    *ft_strjoin(char *s1, char *s2)
     if (!ptr)
         return (NULL);
     if (s1)
-        ft_strcpy(ptr, s1);
+        ft_memcpy(ptr, s1, s1_len);
     if (s2)
-        ft_strcpy(ptr + s1_len, s2);
+        ft_memcpy(ptr + s1_len, s2, s2_len);
     return (ptr);
 }
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	s_len;
-	char	*p;
 
-	if (!s)
-	{
-		return (NULL);
-	}
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-	{
-		return (ft_strdup(""));
-	}
-	else if (start + len > s_len)
-	{
-		len = s_len - start;
-	}
-	p = (char *)malloc(len + 1);
-	if (!p)
-	{
-		return (NULL);
-	}
-	ft_strlcpy(p, s + start, len + 1);
-	return (p);
-}
-void	ft_bzero(void *s, size_t n)
-{
-	size_t			i;
-	unsigned char	*ptr;
-
-	ptr = s;
-	i = 0;
-	while (i < n)
-	{
-		ptr[i] = 0;
-		i++;
-	}
-}
 void	*ft_calloc(size_t count, size_t size)
 {
 	unsigned char	*s;
@@ -122,6 +91,8 @@ char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
 
+    if (!s)
+        return (NULL);
 	i = 0;
 	while (s[i])
 	{

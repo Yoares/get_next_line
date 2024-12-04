@@ -10,11 +10,11 @@ int main(void)
 
     // Open the file for reading
     fd = open("test.txt", O_RDONLY);
-    if (fd < 0)
-    {
-        perror("Error opening file");
-        return (1);
-    }
+    // if (fd < 0)
+    // {
+    //     perror("Error opening file");
+    //     return (1);
+    // }
 
     // Read and print lines until EOF
     while ((line = get_next_line(fd)) != NULL)

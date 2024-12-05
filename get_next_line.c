@@ -6,7 +6,7 @@
 /*   By: ykhoussi <ykhoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:17:00 by ykhoussi          #+#    #+#             */
-/*   Updated: 2024/12/05 21:10:55 by ykhoussi         ###   ########.fr       */
+/*   Updated: 2024/12/05 21:11:51 by ykhoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,10 @@ char *get_next_line(int fd)
     if (full_line)
         new_line = return_line(full_line);
     full_line  = trim(full_line , checknl(full_line));
+    if (!new_line && !full_line)
+    {
+        free(full_line);
+        full_line = NULL;
+    }
     return (new_line);
 }

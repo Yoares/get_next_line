@@ -6,7 +6,7 @@
 /*   By: ykhoussi <ykhoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:17:00 by ykhoussi          #+#    #+#             */
-/*   Updated: 2024/12/05 16:21:59 by ykhoussi         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:56:27 by ykhoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 char *read_manage(int fd, char *full_line)
 {
-    char buffer[BUFFER_SIZE + 1];
+    char *buffer;
     ssize_t byte_read;
-    
+
     while (1)
     {
+        buffer = ft_calloc(BUFFER_SIZE +1 , 1);
         byte_read = read(fd, buffer, BUFFER_SIZE);
         if (byte_read <= 0)
+        {
+            free(buffer);  // Free buffer when done reading.
             break;
+        }
         buffer[byte_read] = '\0';
         full_line = ft_strjoin(full_line, buffer);
-
+        free(buffer);
         if (ft_strchr(buffer, '\n'))
             break;
     }
@@ -59,14 +63,20 @@ char *trim(char *s , int i )
     int j = ft_strlen(s);
     j = j - i;
     ns = ft_calloc(j +  1, 1 );
-
+    if(!ns || !*ns)
+    {
+        free(ns);
+        return NULL;
+    }
     j = 0 ; 
     while(s[i])
     {
-        ns[j]  = s[i];i++;j++;
+        ns[j]  = s[i];
+        i++;
+        j++;
     }
-    return ns ;
-    
+    free(s);
+    return ns;
 }
 char *get_next_line(int fd)
 {

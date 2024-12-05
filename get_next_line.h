@@ -21,7 +21,7 @@
 #include <fcntl.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 225
+# define BUFFER_SIZE 255
 #endif
 
 

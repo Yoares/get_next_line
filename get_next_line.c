@@ -6,7 +6,7 @@
 /*   By: ykhoussi <ykhoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:17:00 by ykhoussi          #+#    #+#             */
-/*   Updated: 2024/12/05 16:56:27 by ykhoussi         ###   ########.fr       */
+/*   Updated: 2024/12/05 21:07:56 by ykhoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char *read_manage(int fd, char *full_line)
     while (1)
     {
         buffer = ft_calloc(BUFFER_SIZE +1 , 1);
+        if (!buffer)
+            return(NULL);
         byte_read = read(fd, buffer, BUFFER_SIZE);
         if (byte_read <= 0)
         {
@@ -57,27 +59,24 @@ int checknl(char *s )
     }
     return i + (s[i] == '\n');
 }
-char *trim(char *s , int i )
+char *trim(char *s, int i)
 {
-    char *ns ;
-    int j = ft_strlen(s);
-    j = j - i;
-    ns = ft_calloc(j +  1, 1 );
-    if(!ns || !*ns)
+    char *ns;
+    int len = ft_strlen(s) - i;
+
+    if (len <= 0)
     {
-        free(ns);
-        return NULL;
+        free(s);
+        return (NULL);
     }
-    j = 0 ; 
-    while(s[i])
-    {
-        ns[j]  = s[i];
-        i++;
-        j++;
-    }
+    ns = ft_calloc(len + 1, 1);
+    if (!ns)
+        return (NULL);
+    ft_memcpy(ns, s + i, len);
     free(s);
-    return ns;
+    return (ns);
 }
+
 char *get_next_line(int fd)
 {
     static  char *full_line;

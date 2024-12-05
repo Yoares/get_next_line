@@ -6,19 +6,19 @@
 /*   By: ykhoussi <ykhoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:14:40 by ykhoussi          #+#    #+#             */
-/*   Updated: 2024/12/04 14:11:29 by ykhoussi         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:03:13 by ykhoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t   ft_strlen(const char *s1)
+size_t   ft_strlen(char *s1)
 {
     size_t i;
-    
-    i = 0;
+	
     if (!s1)
-        return (NULL);
+        return (0);    
+    i = 0;
     while (s1[i])
     {
         i++;

@@ -6,7 +6,7 @@
 /*   By: ykhoussi <ykhoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:15:10 by ykhoussi          #+#    #+#             */
-/*   Updated: 2024/12/04 14:25:12 by ykhoussi         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:07:45 by ykhoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include <stdint.h>
 #include <limits.h>
 #include <stdio.h> 
+
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 255
+# define BUFFER_SIZE 1024
 #endif
 
 
@@ -27,7 +28,7 @@
 char    *get_next_line(int fd);
 char    *ft_strjoin(char *s1, char *s2);
 void	*ft_calloc(size_t count, size_t size);
-size_t   ft_strlen(const char *s1);
+size_t   ft_strlen(char *s1);
 char	*ft_strchr(const char *s, int c);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 #endif

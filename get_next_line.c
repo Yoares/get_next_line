@@ -23,7 +23,7 @@ char *read_manage(int fd, char *full_line)
         byte_read = read(fd, buffer, BUFFER_SIZE);
         if (byte_read <= 0)
         {
-            free(buffer);  // Free buffer when done reading.
+            free(buffer);
             break;
         }
         buffer[byte_read] = '\0';

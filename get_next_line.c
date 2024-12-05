@@ -6,7 +6,7 @@
 /*   By: ykhoussi <ykhoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:17:00 by ykhoussi          #+#    #+#             */
-/*   Updated: 2024/12/05 21:07:56 by ykhoussi         ###   ########.fr       */
+/*   Updated: 2024/12/05 21:10:55 by ykhoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char *read_manage(int fd, char *full_line)
 {
     char *buffer;
     ssize_t byte_read;
+    char *temp;
 
     while (1)
     {
@@ -29,8 +30,11 @@ char *read_manage(int fd, char *full_line)
             break;
         }
         buffer[byte_read] = '\0';
+        temp = full_line;
         full_line = ft_strjoin(full_line, buffer);
         free(buffer);
+        if (temp)
+            free(temp);
         if (ft_strchr(buffer, '\n'))
             break;
     }

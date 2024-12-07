@@ -6,7 +6,7 @@
 /*   By: ykhoussi <ykhoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:14:40 by ykhoussi          #+#    #+#             */
-/*   Updated: 2024/12/05 21:37:33 by ykhoussi         ###   ########.fr       */
+/*   Updated: 2024/12/07 18:11:42 by ykhoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1_len = ft_strlen(s1);
 	if (s2 != NULL)
 		s2_len = ft_strlen(s2);
-	ptr = malloc(s1_len + s2_len + 1);
+	ptr = ft_calloc(s1_len + s2_len + 1, 1);
 	if (!ptr)
 		return (NULL);
 	if (s1)

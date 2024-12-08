@@ -6,7 +6,7 @@
 /*   By: ykhoussi <ykhoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:15:10 by ykhoussi          #+#    #+#             */
-/*   Updated: 2024/12/07 22:01:42 by ykhoussi         ###   ########.fr       */
+/*   Updated: 2024/12/08 14:37:13 by ykhoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <limits.h>
-# include <stdio.h>
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 1024
 # endif
 
 char	*get_next_line(int fd);

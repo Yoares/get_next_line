@@ -6,7 +6,7 @@
 /*   By: ykhoussi <ykhoussi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 22:01:51 by ykhoussi          #+#    #+#             */
-/*   Updated: 2024/12/07 23:10:50 by ykhoussi         ###   ########.fr       */
+/*   Updated: 2024/12/08 14:36:55 by ykhoussi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-#include <fcntl.h>
-#include <stdint.h>
+# include <fcntl.h>
+# include <stdint.h>
 # include <limits.h>
 
 # ifndef BUFFER_SIZE
